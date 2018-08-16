@@ -5,6 +5,7 @@ import (
   "log"
   "encoding/json"
   "github.com/gorilla/mux"
+  "github.com/kevinmoran100/arqui2_practica1/Cassandra"
 )
 
 type heartbeatResponse struct {
@@ -13,6 +14,9 @@ type heartbeatResponse struct {
 }
 
 func main() {
+  CassandraSession := Cassandra.Session
+  defer CassandraSession.Close()
+
   router := mux.NewRouter().StrictSlash(true)
   router.HandleFunc("/", heartbeat)
   log.Fatal(http.ListenAndServe(":8080", router))
