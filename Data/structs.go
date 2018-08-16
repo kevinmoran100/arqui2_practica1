@@ -1,8 +1,8 @@
 package Data
-
-import (
-	"github.com/gocql/gocql"
-)
+// 
+// import (
+// 	"github.com/gocql/gocql"
+// )
 
 // Data struct to hold profile data for our Data
 type Data struct {

@@ -2,7 +2,6 @@ package Data
 
 import (
 "net/http"
-"github.com/gocql/gocql"
 "encoding/json"
 "github.com/kevinmoran100/arqui2_practica1/Cassandra"
 "fmt"
