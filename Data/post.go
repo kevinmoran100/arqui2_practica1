@@ -26,11 +26,17 @@ func Post(w http.ResponseWriter, r *http.Request) {
     // generate a unique UUID for this Data
     // gocqlUuid = gocql.TimeUUID()
 
+    //convertir fecha
+    tsAfter,err = time.Parse(model.TimeLayout, Data.fecha)
+    if err != nil {
+        errs = append(errs, err.Error())
+    }
+
     // write data to Cassandra
     fmt.Println(Data)
     if err := Cassandra.Session.Query(`
       INSERT INTO Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?,?)`,
-      Data.fecha, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
+      tune, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
       errs = append(errs, err.Error())
     } else {
       created = true
