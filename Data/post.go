@@ -6,6 +6,7 @@ import (
 "github.com/kevinmoran100/arqui2_practica1/Cassandra"
 "fmt"
 "time"
+"strconv"
 )
 
 func Post(w http.ResponseWriter, r *http.Request) {
@@ -21,23 +22,25 @@ func Post(w http.ResponseWriter, r *http.Request) {
 
   // if we had no errors from FormToData, we will
   // attempt to save our data to Cassandra
+  //convertir fecha
+  i, err := strconv.ParseInt("Data.fecha", 10, 64)
+  if err != nil {
+      panic(err)
+  }
+  tm := time.Unix(i, 0)
+  fmt.Println(tm)
+
   if len(errs) == 0 {
     fmt.Println("creating a new Data")
 
     // generate a unique UUID for this Data
     // gocqlUuid = gocql.TimeUUID()
 
-    //convertir fecha
-    tsAfter,err = time.Parse(model.TimeLayout, Data.fecha)
-    if err != nil {
-        errs = append(errs, err.Error())
-    }
-
     // write data to Cassandra
     fmt.Println(Data)
     if err := Cassandra.Session.Query(`
       INSERT INTO Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?,?)`,
-      tune, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
+      tm, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
       errs = append(errs, err.Error())
     } else {
       created = true
