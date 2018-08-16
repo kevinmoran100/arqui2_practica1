@@ -6,6 +6,7 @@ import (
   "encoding/json"
   "github.com/gorilla/mux"
   "github.com/kevinmoran100/arqui2_practica1/Cassandra"
+  "github.com/kevinmoran100/arqui2_practica1/Data"
 )
 
 type heartbeatResponse struct {
@@ -19,6 +20,7 @@ func main() {
 
   router := mux.NewRouter().StrictSlash(true)
   router.HandleFunc("/", heartbeat)
+  router.HandleFunc("/data/new",Data.Post)
   log.Fatal(http.ListenAndServe(":8080", router))
 }
 
