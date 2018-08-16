@@ -5,6 +5,7 @@ import (
 "encoding/json"
 "github.com/kevinmoran100/arqui2_practica1/Cassandra"
 "fmt"
+"time"
 )
 
 func Post(w http.ResponseWriter, r *http.Request) {
