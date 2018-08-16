@@ -29,7 +29,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
     // write data to Cassandra
     fmt.Println(Data)
     if err := Cassandra.Session.Query(`
-      INSERT INTO Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?)`,
+      INSERT INTO Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?,?)`,
       Data.fecha, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
       errs = append(errs, err.Error())
     } else {
