@@ -13,9 +13,9 @@ import (
 // array of strings of errors if any occur during processing
 func FormToData(r *http.Request) (Data, []string) {
 	var Data Data
-	var errStr, ageStr string
+	var errStr string
 	var errs []string
-	var err error
+	// var err error
 
 	Data.fecha, errStr = processFormField(r, "fecha")
 	errs = appendError(errs, errStr)
