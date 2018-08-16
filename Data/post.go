@@ -23,7 +23,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
   // if we had no errors from FormToData, we will
   // attempt to save our data to Cassandra
   //convertir fecha
-  i, err := strconv.ParseInt("Data.fecha", 10, 64)
+  i, err := strconv.ParseInt(Data.fecha, 10, 64)
   if err != nil {
       panic(err)
   }
