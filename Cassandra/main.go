@@ -11,6 +11,9 @@ func init() {
 
   cluster := gocql.NewCluster("35.192.151.177")
   cluster.Keyspace = "practica1"
+  cluster.Authenticator = PasswordAuthenticator{
+  Username: "cassandra",
+  Password: "arqui2"}
   Session, err = cluster.CreateSession()
   if err != nil {
     panic(err)
