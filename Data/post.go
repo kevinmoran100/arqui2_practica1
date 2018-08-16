@@ -27,7 +27,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
     // gocqlUuid = gocql.TimeUUID()
 
     // write data to Cassandra
-    
+    fmt.Println(Data)
     if err := Cassandra.Session.Query(`
       INSERT INTO Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?)`,
       Data.fecha, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {

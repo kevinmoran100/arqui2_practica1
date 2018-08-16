@@ -2,7 +2,7 @@ package Data
 
 import (
 	"net/http"
-	"fmt"
+	// "fmt"
 	// "strconv"
 )
 
@@ -17,7 +17,7 @@ func FormToData(r *http.Request) (Data, []string) {
 	var errStr string
 	var errs []string
 	// var err error
-	fmt.Println(r)
+	// fmt.Println(r)
 	Data.fecha, errStr = processFormField(r, "fecha")
 	errs = appendError(errs, errStr)
 	Data.humedad, errStr = processFormField(r, "humedad")
