@@ -3,6 +3,8 @@ Arquitectura de computadoras 1
 Facultad de ingeniería
 Universidad de San Carlos de Guatemala
 
+Direccion del servidor con cassandra: "http://35.192.151.177"
+
 Ejemplo de peticion de almacenamiento de datos:
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'fecha=1534391501&humedad=56&coordenadas=23.23.23&presion=
 23&radiacion=23&temperatura=23&viento=23' "http://35.192.151.177:8080/data/new"

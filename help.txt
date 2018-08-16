@@ -1,0 +1,7 @@
+comandos para cassandra:
+ingreso:
+cqlsh -u cassandra
+contraseña: arqui2
+
+comandos para go
+go run main.go
