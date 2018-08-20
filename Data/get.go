@@ -7,6 +7,7 @@ import (
   "github.com/kevinmoran100/arqui2_practica1/Cassandra"
   "github.com/gorilla/mux"
   "time"
+  "strconv"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
@@ -38,9 +39,14 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
   vars := mux.Vars(r)
   id := vars["fecha"]
+  i, err := strconv.ParseInt(id, 10, 64)
+  if err != nil {
+      panic(err)
+  }
+  tm := time.Unix(i, 0)
     m := map[string]interface{}{}
     query := "SELECT * FROM data WHERE fecha=? LIMIT 1"
-    iterable := Cassandra.Session.Query(query, id).Consistency(gocql.One).Iter()
+    iterable := Cassandra.Session.Query(query, tm).Consistency(gocql.One).Iter()
     for iterable.MapScan(m) {
       found = true
       data = Data{

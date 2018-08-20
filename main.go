@@ -22,7 +22,7 @@ func main() {
   router.HandleFunc("/", heartbeat)
   router.HandleFunc("/data/new",Data.Post)
   router.HandleFunc("/data", Data.Get)
-  router.HandleFunc("/users/{fecha}", Data.GetOne)
+  router.HandleFunc("/data/{fecha}", Data.GetOne)
   log.Fatal(http.ListenAndServe(":8080", router))
 }
 
