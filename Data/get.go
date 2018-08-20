@@ -4,7 +4,7 @@ import (
   "net/http"
   "github.com/gocql/gocql"
   "encoding/json"
-  "github.com/dataname/projectname/Cassandra"
+  "github.com/kevinmoran100/arqui2_practica1/Cassandra"
   "github.com/gorilla/mux"
   "fmt"
 )
