@@ -18,19 +18,19 @@ func FormToData(r *http.Request) (Data, []string) {
 	var errs []string
 	// var err error
 	// fmt.Println(r)
-	Data.fecha, errStr = processFormField(r, "fecha")
+	Data.Fecha, errStr = processFormField(r, "fecha")
 	errs = appendError(errs, errStr)
-	Data.humedad, errStr = processFormField(r, "humedad")
+	Data.Humedad, errStr = processFormField(r, "humedad")
 	errs = appendError(errs, errStr)
-	Data.coordenadas, errStr = processFormField(r, "coordenadas")
+	Data.Coordenadas, errStr = processFormField(r, "coordenadas")
 	errs = appendError(errs, errStr)
-  Data.presion, errStr = processFormField(r, "presion")
+  Data.Presion, errStr = processFormField(r, "presion")
   errs = appendError(errs, errStr)
-	Data.radiacion, errStr = processFormField(r, "radiacion")
+	Data.Radiacion, errStr = processFormField(r, "radiacion")
 	errs = appendError(errs, errStr)
-	Data.temperatura, errStr = processFormField(r, "temperatura")
+	Data.Temperatura, errStr = processFormField(r, "temperatura")
 	errs = appendError(errs, errStr)
-	Data.viento, errStr = processFormField(r, "viento")
+	Data.Viento, errStr = processFormField(r, "viento")
 	errs = appendError(errs, errStr)
 
 
