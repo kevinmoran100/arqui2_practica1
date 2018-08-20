@@ -6,6 +6,7 @@ import (
   "encoding/json"
   "github.com/kevinmoran100/arqui2_practica1/Cassandra"
   "github.com/gorilla/mux"
+  "time"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +17,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
   iterable := Cassandra.Session.Query(query).Iter()
   for iterable.MapScan(m) {
     dataList = append(dataList, Data{
-      fecha: m["fecha"].(gocql.timestamp),
+      fecha: m["fecha"].(time.Time),
       humedad: m["humedad"].(string),
       coordenadas: m["coordenadas"].(string),
       radiacion: m["radiacion"].(string),
