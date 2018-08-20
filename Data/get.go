@@ -8,6 +8,7 @@ import (
   "github.com/gorilla/mux"
   "time"
   "strconv"
+  "fmt"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
@@ -65,6 +66,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
 
   if found {
+    fmt.Println(data);
     json.NewEncoder(w).Encode(GetDataResponse{Data: data})
   } else {
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
