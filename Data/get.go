@@ -50,7 +50,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
     for iterable.MapScan(m) {
       found = true
       data = Data{
-        fecha: m["fecha"].(string),
+        fecha: m["fecha"].(time.Time).String(),
         humedad: m["humedad"].(string),
         coordenadas: m["coordenadas"].(string),
         radiacion: m["radiacion"].(string),
