@@ -4,7 +4,7 @@ import (
 "net/http"
 "encoding/json"
 "github.com/kevinmoran100/arqui2_practica1/Cassandra"
-"fmt"
+// "fmt"
 "time"
 "strconv"
 )
@@ -28,16 +28,16 @@ func Post(w http.ResponseWriter, r *http.Request) {
       panic(err)
   }
   tm := time.Unix(i, 0)
-  fmt.Println(tm)
+  // fmt.Println(tm)
 
   if len(errs) == 0 {
-    fmt.Println("creating a new Data")
+    // fmt.Println("creating a new Data")
 
     // generate a unique UUID for this Data
     // gocqlUuid = gocql.TimeUUID()
 
     // write data to Cassandra
-    fmt.Println(Data)
+    // fmt.Println(Data)
     if err := Cassandra.Session.Query(`
       INSERT INTO practica1.Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?,?)`,
       tm, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
@@ -50,10 +50,10 @@ func Post(w http.ResponseWriter, r *http.Request) {
   // depending on whether we created the Data, return the
   // resource ID in a JSON payload, or return our errors
   if created {
-    fmt.Println("fecha", Data.fecha)
+    // fmt.Println("fecha", Data.fecha)
     json.NewEncoder(w).Encode(NewDataResponse{fecha: Data.fecha})
   } else {
-    fmt.Println("errors", errs)
+    // fmt.Println("errors", errs)
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
   }
 }
