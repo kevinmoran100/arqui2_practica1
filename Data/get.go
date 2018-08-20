@@ -17,7 +17,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
   iterable := Cassandra.Session.Query(query).Iter()
   for iterable.MapScan(m) {
     dataList = append(dataList, Data{
-      fecha: m["fecha"].(time),
+      fecha: m["fecha"].(time.Time),
       humedad: m["humedad"].(string),
       coordenadas: m["coordenadas"].(string),
       radiacion: m["radiacion"].(string),
