@@ -9,13 +9,13 @@ import (
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
-  var dataList []data
+  var dataList []Data
   m := map[string]interface{}{}
 
   query := "SELECT * FROM data"
   iterable := Cassandra.Session.Query(query).Iter()
   for iterable.MapScan(m) {
-    dataList = append(dataList, data{
+    dataList = append(dataList, Data{
       fecha: m["fecha"].(string),
       humedad: m["humedad"].(string),
       coordenadas: m["coordenadas"].(string),
@@ -31,7 +31,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {
-  var data data
+  var data Data
   var errs []string
   var found bool = false
 
