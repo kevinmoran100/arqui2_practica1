@@ -30,7 +30,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
     m = map[string]interface{}{}
   }
 
-  json.NewEncoder(w).Encode(AllDataResponse{datos: dataList})
+  json.NewEncoder(w).Encode(AllDataResponse{Datos: dataList})
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {
@@ -67,7 +67,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
   if found {
     fmt.Println(data);
-    json.NewEncoder(w).Encode(GetDataResponse{dato: data})
+    json.NewEncoder(w).Encode(GetDataResponse{Dato: data})
   } else {
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
   }
