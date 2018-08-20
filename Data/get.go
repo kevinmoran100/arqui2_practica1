@@ -19,13 +19,13 @@ func Get(w http.ResponseWriter, r *http.Request) {
   iterable := Cassandra.Session.Query(query).Iter()
   for iterable.MapScan(m) {
     dataList = append(dataList, Data{
-      fecha: m["fecha"].(time.Time).String(),
-      humedad: m["humedad"].(string),
-      coordenadas: m["coordenadas"].(string),
-      presion: m["presion"].(string),
-      radiacion: m["radiacion"].(string),
-      temperatura: m["temperatura"].(string),
-      viento: m["viento"].(string),
+      Fecha: m["fecha"].(time.Time).String(),
+      Humedad: m["humedad"].(string),
+      Coordenadas: m["coordenadas"].(string),
+      Presion: m["presion"].(string),
+      Radiacion: m["radiacion"].(string),
+      Temperatura: m["temperatura"].(string),
+      Viento: m["viento"].(string)
     })
     m = map[string]interface{}{}
   }
@@ -51,13 +51,13 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
     for iterable.MapScan(m) {
       found = true
       data = Data{
-        fecha: m["fecha"].(time.Time).String(),
-        humedad: m["humedad"].(string),
-        coordenadas: m["coordenadas"].(string),
-        radiacion: m["radiacion"].(string),
-        temperatura: m["temperatura"].(string),
-        presion: m["presion"].(string),
-        viento: m["viento"].(string),
+        Fecha: m["fecha"].(time.Time).String(),
+        Humedad: m["humedad"].(string),
+        Coordenadas: m["coordenadas"].(string),
+        Presion: m["presion"].(string),
+        Radiacion: m["radiacion"].(string),
+        Temperatura: m["temperatura"].(string),
+        Viento: m["viento"].(string)
       }
     }
     if !found {
