@@ -22,15 +22,15 @@ func Get(w http.ResponseWriter, r *http.Request) {
       fecha: m["fecha"].(time.Time).String(),
       humedad: m["humedad"].(string),
       coordenadas: m["coordenadas"].(string),
+      presion: m["presion"].(string),
       radiacion: m["radiacion"].(string),
       temperatura: m["temperatura"].(string),
-      presion: m["presion"].(string),
       viento: m["viento"].(string),
     })
     m = map[string]interface{}{}
   }
 
-  json.NewEncoder(w).Encode(AllDataResponse{Data: dataList})
+  json.NewEncoder(w).Encode(AllDataResponse{datos: dataList})
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {

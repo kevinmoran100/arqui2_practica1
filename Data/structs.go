@@ -27,7 +27,7 @@ type AllDataResponse struct {
 
 // NewDataResponse builds a payload of new Data resource ID
 type NewDataResponse struct {
-	fecha string`json:"fecha"`
+	fecha string `json:"fecha"`
 }
 
 // ErrorResponse returns an array of error strings if appropriate
