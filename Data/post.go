@@ -51,7 +51,8 @@ func Post(w http.ResponseWriter, r *http.Request) {
   // resource ID in a JSON payload, or return our errors
   if created {
     // fmt.Println("fecha", Data.fecha)
-    json.NewEncoder(w).Encode("{\"fecha\":\""+Data.fecha+"\"}")
+    // json.NewEncoder(w).Encode("{\"fecha\":\""+Data.fecha+"\"}")
+    json.NewEncoder(w).Encode(NewDataResponse{fecha: Data.fecha})
   } else {
     // fmt.Println("errors", errs)
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
