@@ -27,7 +27,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
     m = map[string]interface{}{}
   }
 
-  json.NewEncoder(w).Encode(DataResponse{data: dataList})
+  json.NewEncoder(w).Encode(AllDataResponse{Data: dataList})
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +42,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
     iterable := Cassandra.Session.Query(query, id).Consistency(gocql.One).Iter()
     for iterable.MapScan(m) {
       found = true
-      data = data{
+      data = Data{
         fecha: m["fecha"].(string),
         humedad: m["humedad"].(string),
         coordenadas: m["coordenadas"].(string),
@@ -58,7 +58,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
 
   if found {
-    json.NewEncoder(w).Encode(GetdataResponse{data: data})
+    json.NewEncoder(w).Encode(GetdataResponse{Data: data})
   } else {
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
   }

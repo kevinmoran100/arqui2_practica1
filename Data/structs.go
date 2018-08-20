@@ -1,5 +1,5 @@
 package Data
-// 
+//
 // import (
 // 	"github.com/gocql/gocql"
 // )
@@ -21,8 +21,8 @@ type GetDataResponse struct {
 }
 
 // AllDatasResponse to form payload of an array of Data structs
-type AllDatasResponse struct {
-	Datas []Data `json:"Datas"`
+type AllDataResponse struct {
+	Data []Data `json:"Data"`
 }
 
 // NewDataResponse builds a payload of new Data resource ID
