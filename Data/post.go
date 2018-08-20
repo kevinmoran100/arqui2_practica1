@@ -52,7 +52,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
   if created {
     // fmt.Println("fecha", Data.fecha)
     // json.NewEncoder(w).Encode("{\"fecha\":\""+Data.fecha+"\"}")
-    aux = NewDataResponse{fecha: Data.fecha}
+    aux := NewDataResponse{fecha: Data.fecha}
     fmt.Println(aux)
     json.NewEncoder(w).Encode(aux)
   } else {
