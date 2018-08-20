@@ -23,7 +23,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
   // if we had no errors from FormToData, we will
   // attempt to save our data to Cassandra
   //convertir fecha
-  i, err := strconv.ParseInt(Data.fecha, 10, 64)
+  i, err := strconv.ParseInt(Data.Fecha, 10, 64)
   if err != nil {
       panic(err)
   }
@@ -31,7 +31,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
   // fmt.Println(tm)
 
   if len(errs) == 0 {
-    // fmt.Println("creating a new Data")
+    fmt.Println("creating a new Data")
 
     // generate a unique UUID for this Data
     // gocqlUuid = gocql.TimeUUID()
@@ -40,7 +40,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
     // fmt.Println(Data)
     if err := Cassandra.Session.Query(`
       INSERT INTO practica1.Data (fecha,humedad,coordenadas,radiacion,temperatura,presion,viento) VALUES (?, ?, ?, ?, ?, ?,?)`,
-      tm, Data.humedad, Data.coordenadas, Data.radiacion, Data.temperatura, Data.presion, Data.viento).Exec(); err != nil {
+      tm, Data.Humedad, Data.Coordenadas, Data.Radiacion, Data.Temperatura, Data.Presion, Data.Viento).Exec(); err != nil {
       errs = append(errs, err.Error())
     } else {
       created = true
@@ -52,7 +52,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
   if created {
     // fmt.Println("fecha", Data.fecha)
     // json.NewEncoder(w).Encode("{\"fecha\":\""+Data.fecha+"\"}")
-    json.NewEncoder(w).Encode(NewDataResponse{Fecha: Data.fecha})
+    json.NewEncoder(w).Encode(NewDataResponse{Fecha: Data.Fecha})
   } else {
     // fmt.Println("errors", errs)
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
