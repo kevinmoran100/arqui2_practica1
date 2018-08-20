@@ -67,7 +67,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
   if found {
     fmt.Println(data);
-    json.NewEncoder(w).Encode(GetDataResponse{Data: data})
+    json.NewEncoder(w).Encode(GetDataResponse{dato: data})
   } else {
     json.NewEncoder(w).Encode(ErrorResponse{Errors: errs})
   }

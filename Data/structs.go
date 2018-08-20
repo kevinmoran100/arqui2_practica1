@@ -17,12 +17,12 @@ type Data struct {
 
 // GetDataResponse to form payload returning a single Data struct
 type GetDataResponse struct {
-	Data Data `json:"Data"`
+	dato Data `json:"dato"`
 }
 
 // AllDatasResponse to form payload of an array of Data structs
 type AllDataResponse struct {
-	Data []Data `json:"Data"`
+	datos []Data `json:"datos"`
 }
 
 // NewDataResponse builds a payload of new Data resource ID
