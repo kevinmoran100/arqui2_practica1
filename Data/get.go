@@ -25,7 +25,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
       Presion: m["presion"].(string),
       Radiacion: m["radiacion"].(string),
       Temperatura: m["temperatura"].(string),
-      Viento: m["viento"].(string)
+      Viento: m["viento"].(string),
     })
     m = map[string]interface{}{}
   }
@@ -57,7 +57,7 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
         Presion: m["presion"].(string),
         Radiacion: m["radiacion"].(string),
         Temperatura: m["temperatura"].(string),
-        Viento: m["viento"].(string)
+        Viento: m["viento"].(string),
       }
     }
     if !found {
