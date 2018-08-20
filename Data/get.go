@@ -6,7 +6,6 @@ import (
   "encoding/json"
   "github.com/kevinmoran100/arqui2_practica1/Cassandra"
   "github.com/gorilla/mux"
-  "fmt"
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
@@ -28,7 +27,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
     m = map[string]interface{}{}
   }
 
-  json.NewEncoder(w).Encode(datasResponse{datas: dataList})
+  json.NewEncoder(w).Encode(DataResponse{data: dataList})
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {
@@ -38,11 +37,9 @@ func GetOne(w http.ResponseWriter, r *http.Request) {
 
   vars := mux.Vars(r)
   id := vars["fecha"]
-
-
     m := map[string]interface{}{}
     query := "SELECT * FROM data WHERE fecha=? LIMIT 1"
-    iterable := Cassandra.Session.Query(query, uuid).Consistency(gocql.One).Iter()
+    iterable := Cassandra.Session.Query(query, id).Consistency(gocql.One).Iter()
     for iterable.MapScan(m) {
       found = true
       data = data{
