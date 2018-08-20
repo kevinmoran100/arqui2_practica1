@@ -1,3 +1,5 @@
+package Data
+
 import (
   "net/http"
   "github.com/gocql/gocql"
