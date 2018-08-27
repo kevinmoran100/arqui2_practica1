@@ -27,5 +27,6 @@ func main() {
 }
 
 func heartbeat(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Access-Control-Allow-Origin", "*")
   json.NewEncoder(w).Encode(heartbeatResponse{Status: "OK", Code: 200})
 }

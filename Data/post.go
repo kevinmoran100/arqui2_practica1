@@ -10,6 +10,7 @@ import (
 )
 
 func Post(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Access-Control-Allow-Origin", "*")
   var errs []string
   // var fecha string
 

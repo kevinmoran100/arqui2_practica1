@@ -12,6 +12,7 @@ import (
 )
 
 func Get(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Access-Control-Allow-Origin", "*")
   var dataList []Data
   m := map[string]interface{}{}
 
@@ -34,6 +35,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetOne(w http.ResponseWriter, r *http.Request) {
+  w.Header().Set("Access-Control-Allow-Origin", "*")
   var data Data
   var errs []string
   var found bool = false
